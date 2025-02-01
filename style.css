@@ -7,35 +7,44 @@ body {
   height: 100vh;
   background: #000;
   font-family: Arial, sans-serif;
-  overflow: hidden;
 }
 
-.marquee {
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  box-sizing: border-box;
+.wrapper {
+  display: flex;
+  align-items: center;
 }
 
-.marquee-content {
-  display: inline-block;
-  padding-left: 100%; /* Bắt đầu từ bên phải màn hình */
-  animation: marquee 20s linear infinite;
-}
-
-.marquee-content span {
-  display: inline-block;
-  padding-right: 50px; /* Khoảng cách giữa các đoạn văn bản */
+.static-txt {
   color: #fff;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 60px;
+  font-weight: 400;
+  margin-right: 15px;
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(100%); /* Bắt đầu từ bên phải */
+.dynamic-txt {
+  color: #ff6f61;
+  font-size: 60px;
+  font-weight: 500;
+  overflow: hidden; /* Ẩn phần văn bản chưa hiển thị */
+  white-space: nowrap; /* Ngăn chữ xuống dòng */
+  border-right: 2px solid #ff6f61; /* Hiệu ứng con trỏ */
+  animation: typing 5s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0; /* Bắt đầu với chiều rộng bằng 0 */
   }
-  100% {
-    transform: translateX(-100%); /* Di chuyển sang bên trái */
+  to {
+    width: 100%; /* Kết thúc với chiều rộng đầy đủ */
+  }
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent; /* Nhấp nháy con trỏ */
+  }
+  50% {
+    border-color: #ff6f61;
   }
 }
