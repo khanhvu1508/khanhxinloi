@@ -1,39 +1,65 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #000;
-  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  background: #343F4F;
 }
-
-.wrapper {
+.wrapper{
   display: flex;
-  align-items: center;
 }
-
-.static-txt {
+.wrapper .static-txt{
   color: #fff;
   font-size: 60px;
   font-weight: 400;
-  margin-right: 15px;
 }
-
-.dynamic-txt {
-  color: #ff6f61;
+.wrapper .dynamic-txts{
+  margin-left: 15px;
+  height: 90px;
+  line-height: 90px;
+  overflow: hidden;
+}
+.dynamic-txts li{
+  list-style: none;
+  color: #FC6D6D;
   font-size: 60px;
   font-weight: 500;
-  overflow: hidden; /* Ẩn phần văn bản chưa hiển thị */
-  white-space: nowrap; /* Ngăn chữ xuống dòng */
-  border-right: 2px solid #ff6f61; /* Hiệu ứng con trỏ */
-  animation: typing 10s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
+  position: relative;
+  top: 0;
+  animation: slide 12s steps(4) infinite;
 }
-
-@keyframes typing {
-  from {
-    width: 0; /* Bắt đầu với chiều rộng bằng 0 */
+@keyframes slide {
+  100%{
+    top: -360px;
   }
-  to {
-    width: 100%; /* Kết thúc với chiều rộng đầy đủ
+}
+.dynamic-txts li span{
+  position: relative;
+  margin: 5px 0;
+  line-height: 80px;
+}
+.dynamic-txts li span::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #343F4F;
+  border-left: 2px solid #FC6D6D;
+  animation: typing 3s steps(10) infinite;
+}
+@keyframes typing {
+  40%, 60%{
+    left: calc(100% + 30px);
+  }
+  100%{
+    left: 0;
+  }
+}
