@@ -1,20 +1,52 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/codingnepal -->
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Multiple Texts Typing Animation | CodingNepal</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ứng Dụng Ghi Chú</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: black;
+      color: white;
+      font-family: 'Arial', sans-serif;
+    }
+    #notePad {
+      width: 80%;
+      height: 80%;
+      border: none;
+      background-color: black;
+      color: white;
+      font-size: 20px;
+      padding: 10px;
+      outline: none;
+      overflow-y: auto;
+      resize: none;
+    }
+  </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="static-txt">I'm a</div>
-    <ul class="dynamic-txts">
-      <li><span>trinhoikhanhxinloitrinhnhieunhe</span></li>
-      <li><span>Designer</span></li>
-      <li><span>Developer</span></li>
-      <li><span>Freelancer</span></li>
-    </ul>
-  </div>
+  <textarea id="notePad" placeholder="Viết ghi chú của bạn ở đây..."></textarea>
+
+  <script>
+    // Cập nhật tự động, giúp người dùng có thể nhập trực tiếp lên màn hình
+    const notePad = document.getElementById('notePad');
+
+    notePad.addEventListener('input', function() {
+      localStorage.setItem('noteContent', notePad.value); // Lưu nội dung ghi chú vào localStorage
+    });
+
+    // Khi tải lại trang, lấy lại nội dung đã lưu
+    window.onload = function() {
+      if (localStorage.getItem('noteContent')) {
+        notePad.value = localStorage.getItem('noteContent');
+      }
+    };
+  </script>
 </body>
 </html>
